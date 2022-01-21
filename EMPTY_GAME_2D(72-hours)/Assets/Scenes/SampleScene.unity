@@ -157,6 +157,7 @@ Transform:
   m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 619394802}
   - {fileID: 1648416777}
   m_Father: {fileID: 833921267}
   m_RootOrder: 0
@@ -450,7 +451,7 @@ Transform:
   m_Children:
   - {fileID: 1359353772}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &413957636
 GameObject:
@@ -503,9 +504,13 @@ MonoBehaviour:
   _offset2: {x: -1.5, y: 0}
   _offset3: {x: 0, y: 1.5}
   _offset4: {x: 0, y: -1.5}
+  _checkDistance: 50
   _monsterLayer:
     serializedVersion: 2
     m_Bits: 64
+  _playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &458385326
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,15 +697,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619394800}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_ComponentVersion: 1
-  m_LightType: 4
+  m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.5
+  m_FalloffIntensity: 0.665
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_LightVolumeIntensity: 1
@@ -751,8 +756,8 @@ MonoBehaviour:
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 1
+  m_PointLightInnerRadius: 0.42
+  m_PointLightOuterRadius: 2.5
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -770,13 +775,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619394800}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.2222223, y: 2.2222223, z: 2.2222223}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 26063340}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &792981550
 GameObject:
@@ -839,7 +844,7 @@ Transform:
   m_Children:
   - {fileID: 26063340}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &873626653
 GameObject:
@@ -892,9 +897,13 @@ MonoBehaviour:
   _offset2: {x: -1.5, y: 0}
   _offset3: {x: 0, y: 1.5}
   _offset4: {x: 0, y: -1.5}
+  _checkDistance: 50
   _monsterLayer:
     serializedVersion: 2
     m_Bits: 64
+  _playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &947597215
 GameObject:
   m_ObjectHideFlags: 0
@@ -2274,6 +2283,7 @@ GameObject:
   - component: {fileID: 1359353775}
   - component: {fileID: 1359353774}
   - component: {fileID: 1359353773}
+  - component: {fileID: 1359353776}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Untagged
@@ -2386,6 +2396,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1359353776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359353771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7366e9924d08aa479580d8d2b57c83c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _monsterData: {fileID: 11400000, guid: 64ae39858d6613e4d93f55de07ead3a3, type: 2}
+  _debugGizmos: 0
 --- !u!1 &1490787517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2431,7 +2455,7 @@ Transform:
   - {fileID: 1315455405}
   - {fileID: 1347460839}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1614049331
 GameObject:
@@ -2497,7 +2521,7 @@ Transform:
   - {fileID: 873626654}
   - {fileID: 947597216}
   m_Father: {fileID: 26063340}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1648416778
 MonoBehaviour:
@@ -3270,5 +3294,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

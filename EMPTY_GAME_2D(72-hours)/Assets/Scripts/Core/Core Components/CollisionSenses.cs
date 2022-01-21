@@ -14,8 +14,10 @@ public class CollisionSenses : CoreComponents
     [SerializeField] private Transform _checkPosition;
     [SerializeField] private Vector2 _overlapSize;
     [SerializeField] private Vector2 _offset1, _offset2, _offset3, _offset4;
+    [SerializeField] private float _checkDistance = 50f;
     private int _trueOffsetValue;
     [SerializeField] private LayerMask _monsterLayer;
+    [SerializeField] private LayerMask _playerLayer;
 
     public void LogicUpdate()
     {
@@ -46,4 +48,28 @@ public class CollisionSenses : CoreComponents
     }
 
     public void SetTrueOffsetValue(int index) => _trueOffsetValue = index;
+
+
+    #region Monster Region
+
+    public bool RightRaycast
+    {
+        get => Physics2D.Raycast(_checkPosition.position, Vector2.right, _checkDistance, _playerLayer);
+    }
+
+    public bool LeftRaycast
+    {
+        get => Physics2D.Raycast(_checkPosition.position, Vector2.left, _checkDistance, _playerLayer);
+    }
+
+    public bool UpRaycast
+    {
+        get => Physics2D.Raycast(_checkPosition.position, Vector2.up, _checkDistance, _playerLayer);
+    }
+
+    public bool DownRaycast
+    {
+        get => Physics2D.Raycast(_checkPosition.position, Vector2.down, _checkDistance, _playerLayer);
+    }
+    #endregion
 }
