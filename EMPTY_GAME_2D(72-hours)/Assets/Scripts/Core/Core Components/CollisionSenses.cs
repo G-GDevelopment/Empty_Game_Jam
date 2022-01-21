@@ -21,6 +21,7 @@ public class CollisionSenses : CoreComponents
     private int _trueOffsetValue;
     [SerializeField] private LayerMask _monsterLayer;
     [SerializeField] private LayerMask _playerLayer;
+    private ContactFilter2D _contactFilter;
 
     public void LogicUpdate()
     {
@@ -30,12 +31,6 @@ public class CollisionSenses : CoreComponents
     public bool IsLookingAtMonster
     {
         get => Physics2D.OverlapBox(_checkPosition.position + (Vector3)trueOffset(), _overlapSize, _monsterLayer);
-    }
-
-
-    public Collider2D CreaturesInCollisionZone()
-    {
-        return Physics2D.OverlapBox(_checkPosition.position + (Vector3)trueOffset(), _overlapSize, _monsterLayer);
     }
 
     public Vector2 trueOffset()

@@ -17,9 +17,10 @@ public class MonsterMovementState : MonsterGroundedState
     {
         base.StandardUpdate();
 
-        core.Movement.SetMovement(direction, inputX, inputY, monsterData.MovementSpeed);
+        
+        core.Movement.SetMovement(direction, inputX, inputY, monsterData.MovementSpeed, monster.IsSpotted);
 
-        if (direction == Vector2.zero && !core.Movement.IsMoving && !monster.IsSpotted)
+        if (direction == Vector2.zero && !core.Movement.IsMoving || monster.IsSpotted)
         {
             stateMachine.ChangeState(monster.IdleState);
             //Set FacingDirection before leaving this state to Idle

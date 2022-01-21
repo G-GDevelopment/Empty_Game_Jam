@@ -73,6 +73,7 @@ public class Monster : MonoBehaviour, ISpotted
         Debug.Log("Sweeping Angle Has been spotted");
 
         _isSpottedByPlayer = isSpotted;
+
     }
     #endregion
 

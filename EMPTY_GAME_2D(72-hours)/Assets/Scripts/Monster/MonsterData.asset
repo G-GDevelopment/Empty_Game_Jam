@@ -14,3 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MovementSpeed: 4
   MovementSpeedBack: 4
+  BoxColliderSizeRight: {x: 20, y: 3}
+  BoxColliderSizeUp: {x: 3, y: 5}
+  BoxColliderOffsetRight: {x: 3, y: 0}
+  BoxColliderOffsetUp: {x: 0, y: 3}

@@ -11,6 +11,8 @@ public class MonsterIdleState : MonsterGroundedState
     public override void EnterState()
     {
         base.EnterState();
+        core.Movement.SetMovementZero();
+        direction = Vector2.zero;
     }
 
     public override void ExitState()
@@ -25,7 +27,7 @@ public class MonsterIdleState : MonsterGroundedState
 
         if (!isExistingState)
         {
-            if (direction != Vector2.zero)
+            if (direction != Vector2.zero && !monster.IsSpotted)
             {
                 stateMachine.ChangeState(monster.MovementState);
             }

@@ -46,19 +46,19 @@ public class PlayerGroundedState : PlayerState
         direction = new Vector2(inputX, inputY);
         UpdateLastKnownInput(inputX, inputY);
 
-        //Stop Monster From moving
-        if (core.CollisionSenses.IsLookingAtMonster)
+        if(SetIndex() == 1)
         {
-            core.Ability.AddToDetected(core.CollisionSenses.CreaturesInCollisionZone());
-
-        }
-        else
+            core.Ability.UpdateBoxCollider(playerData.BoxColliderSizeRight, playerData.BoxColliderOffsetRight);
+        }else if(SetIndex() == 2)
         {
-            core.Ability.RemoveFromDetected(core.CollisionSenses.CreaturesInCollisionZone());
+            core.Ability.UpdateBoxCollider(playerData.BoxColliderSizeRight, playerData.BoxColliderOffsetRight * -1);
+        }else if(SetIndex() == 3)
+        {
+            core.Ability.UpdateBoxCollider(playerData.BoxColliderSizeUp, playerData.BoxColliderOffsetUp);
+        }else if(SetIndex() == 4)
+        {
+            core.Ability.UpdateBoxCollider(playerData.BoxColliderSizeUp, playerData.BoxColliderOffsetUp * -1);
         }
-
-
-
     }
 
     private int SetIndex()

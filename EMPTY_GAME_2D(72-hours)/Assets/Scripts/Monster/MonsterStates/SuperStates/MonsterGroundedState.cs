@@ -23,18 +23,25 @@ public class MonsterGroundedState : MonsterState
 
     private void SetDirection()
     {
-        if (core.CollisionSenses.RightRaycast)
+        if (!monster.IsSpotted)
         {
-            direction = Vector2.right;
-        }else if (core.CollisionSenses.LeftRaycast)
+            if (core.CollisionSenses.RightRaycast)
+            {
+                direction = Vector2.right;
+            }else if (core.CollisionSenses.LeftRaycast)
+            {
+                direction = Vector2.left;
+            }else if (core.CollisionSenses.UpRaycast)
+            {
+                direction = Vector2.up;
+            }else if (core.CollisionSenses.DownRaycast)
+            {
+                direction = Vector2.down;
+            }
+        }
+        else
         {
-            direction = Vector2.left;
-        }else if (core.CollisionSenses.UpRaycast)
-        {
-            direction = Vector2.up;
-        }else if (core.CollisionSenses.DownRaycast)
-        {
-            direction = Vector2.down;
+            direction = Vector2.zero;
         }
     }
 }

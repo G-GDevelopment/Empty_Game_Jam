@@ -62,6 +62,48 @@ public class Movement : CoreComponents
             _isMoving = false;
         }
     }
+    public void SetMovement(Vector2 p_direction, int p_inputX, int p_inputY, float p_movementSpeed, bool p_bool)
+    {
+        if (!p_bool)
+        {
+            _isMoving = true;
+
+            Rigidbody.transform.position = Vector3.MoveTowards(Rigidbody.transform.position, _movePoint.position, p_movementSpeed * Time.deltaTime);
+
+
+            if (CanMove(p_direction))
+            {
+                if (Vector3.Distance(Rigidbody.transform.position, _movePoint.position) <= 0.05f)
+                {
+                    if (p_inputX != 0)
+                    {
+                        _movePoint.position += new Vector3(p_inputX, 0, 0);
+                    }
+
+                    if (p_inputY != 0)
+                    {
+                        _movePoint.position += new Vector3(0, p_inputY, 0);
+                    }
+
+                }
+            }
+
+            if (Rigidbody.transform.position == _movePoint.position)
+            {
+                _isMoving = false;
+            }
+        }
+        else
+        {
+            _movePoint.position = Rigidbody.transform.position;
+        }
+    }
+
+    public void SetMovementZero()
+    {
+        Rigidbody.transform.position = Rigidbody.transform.position;
+        _movePoint.position = Rigidbody.transform.position;
+    }
 
     private bool CanMove(Vector2 p_direction)
     {
