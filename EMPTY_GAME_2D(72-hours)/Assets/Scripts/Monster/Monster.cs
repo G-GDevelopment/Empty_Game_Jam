@@ -74,7 +74,11 @@ public class Monster : MonoBehaviour, ISpotted
 
         _isSpottedByPlayer = isSpotted;
 
+        
+
     }
+
+    public void SetIsSpottedByPlayerToFalse() => _isSpottedByPlayer = false;
     #endregion
 
     #region DrawGizmos
@@ -87,6 +91,12 @@ public class Monster : MonoBehaviour, ISpotted
             Debug.DrawRay(transform.position, Vector2.left * Core.CollisionSenses.CheckDistance);
             Debug.DrawRay(transform.position, Vector2.up * Core.CollisionSenses.CheckDistance);
             Debug.DrawRay(transform.position, Vector2.down * Core.CollisionSenses.CheckDistance);
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawCube(Core.CollisionSenses.CheckPosition.position + (Vector3)Core.CollisionSenses.Offset1, Core.CollisionSenses.OverlapSize);
+            Gizmos.DrawCube(Core.CollisionSenses.CheckPosition.position + (Vector3)Core.CollisionSenses.Offset2, Core.CollisionSenses.OverlapSize);
+            Gizmos.DrawCube(Core.CollisionSenses.CheckPosition.position + (Vector3)Core.CollisionSenses.Offset3, Core.CollisionSenses.OverlapSize);
+            Gizmos.DrawCube(Core.CollisionSenses.CheckPosition.position + (Vector3)Core.CollisionSenses.Offset4, Core.CollisionSenses.OverlapSize);
         }
     }
 

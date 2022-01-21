@@ -28,9 +28,10 @@ public class CollisionSenses : CoreComponents
         
     }
 
-    public bool IsLookingAtMonster
+
+    public bool IsPlayerLeavingLookingZone(Vector2 p_direction)
     {
-        get => Physics2D.OverlapBox(_checkPosition.position + (Vector3)trueOffset(), _overlapSize, _monsterLayer);
+        return Physics2D.Raycast(_checkPosition.position, p_direction, 2.45f, _playerLayer);
     }
 
     public Vector2 trueOffset()

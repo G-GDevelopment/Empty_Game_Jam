@@ -369,7 +369,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 135079931}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Checker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -401,7 +401,7 @@ GameObject:
   m_Component:
   - component: {fileID: 159435916}
   - component: {fileID: 159435917}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Core
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -480,7 +480,7 @@ GameObject:
   m_Component:
   - component: {fileID: 413957637}
   - component: {fileID: 413957638}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: CollisionSenses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -538,7 +538,7 @@ GameObject:
   m_Component:
   - component: {fileID: 458385327}
   - component: {fileID: 458385328}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Ability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2329,7 +2329,7 @@ GameObject:
   - component: {fileID: 1359353774}
   - component: {fileID: 1359353776}
   - component: {fileID: 1359353778}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Monster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2531,7 +2531,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1614049332}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: MovePoint(MONSTER)
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
@@ -2610,7 +2610,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1750271117}
   - component: {fileID: 1750271118}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Movement
   m_TagString: Untagged
   m_Icon: {fileID: 0}

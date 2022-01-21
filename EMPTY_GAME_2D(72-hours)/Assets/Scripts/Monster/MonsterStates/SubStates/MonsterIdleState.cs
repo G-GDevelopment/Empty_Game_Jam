@@ -27,7 +27,7 @@ public class MonsterIdleState : MonsterGroundedState
 
         if (!isExistingState)
         {
-            if (direction != Vector2.zero && !monster.IsSpotted)
+            if (direction != Vector2.zero)
             {
                 stateMachine.ChangeState(monster.MovementState);
             }
