@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 26063343}
   - component: {fileID: 26063346}
   - component: {fileID: 26063344}
+  - component: {fileID: 26063347}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -153,7 +154,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 26063339}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0.5, z: 1}
   m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -343,6 +344,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!70 &26063347
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26063339}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 2}
+  m_Direction: 0
 --- !u!1 &135079930
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,7 +416,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 159435915}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.666667, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -504,10 +521,10 @@ MonoBehaviour:
   _offset2: {x: -1.5, y: 0}
   _offset3: {x: 0, y: 1.5}
   _offset4: {x: 0, y: -1.5}
-  _checkDistance: 50
+  _checkDistance: 10
   _monsterLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 8
   _playerLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -897,13 +914,13 @@ MonoBehaviour:
   _offset2: {x: -1.5, y: 0}
   _offset3: {x: 0, y: 1.5}
   _offset4: {x: 0, y: -1.5}
-  _checkDistance: 50
+  _checkDistance: 5
   _monsterLayer:
     serializedVersion: 2
     m_Bits: 64
   _playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
 --- !u!1 &947597215
 GameObject:
   m_ObjectHideFlags: 0
@@ -2281,10 +2298,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1359353772}
   - component: {fileID: 1359353775}
+  - component: {fileID: 1359353777}
   - component: {fileID: 1359353774}
-  - component: {fileID: 1359353773}
   - component: {fileID: 1359353776}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Monster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2299,7 +2316,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1359353771}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5, y: 0.5, z: 0}
+  m_LocalPosition: {x: -2.5, y: 0.5, z: 1}
   m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2307,22 +2324,6 @@ Transform:
   m_Father: {fileID: 258610060}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &1359353773
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1359353771}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 2, y: 2}
-  m_Direction: 0
 --- !u!50 &1359353774
 Rigidbody2D:
   serializedVersion: 4
@@ -2410,6 +2411,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _monsterData: {fileID: 11400000, guid: 64ae39858d6613e4d93f55de07ead3a3, type: 2}
   _debugGizmos: 0
+--- !u!95 &1359353777
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359353771}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1490787517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2447,7 +2468,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1490787517}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2467,9 +2488,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1614049332}
   m_Layer: 3
-  m_Name: MovePoint
+  m_Name: MovePoint(MONSTER)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

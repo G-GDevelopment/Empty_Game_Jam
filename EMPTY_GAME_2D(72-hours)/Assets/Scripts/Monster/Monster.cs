@@ -75,10 +75,10 @@ public class Monster : MonoBehaviour
         if (_debugGizmos)
         {
             Gizmos.color = Color.cyan;
-            Gizmos.DrawCube(Core.CollisionSenses.CheckPosition.position + (Vector3)Core.CollisionSenses.Offset1, Core.CollisionSenses.OverlapSize);
-            Gizmos.DrawCube(Core.CollisionSenses.CheckPosition.position + (Vector3)Core.CollisionSenses.Offset2, Core.CollisionSenses.OverlapSize);
-            Gizmos.DrawCube(Core.CollisionSenses.CheckPosition.position + (Vector3)Core.CollisionSenses.Offset3, Core.CollisionSenses.OverlapSize);
-            Gizmos.DrawCube(Core.CollisionSenses.CheckPosition.position + (Vector3)Core.CollisionSenses.Offset4, Core.CollisionSenses.OverlapSize);
+            Debug.DrawRay(transform.position, Vector2.right * Core.CollisionSenses.CheckDistance);
+            Debug.DrawRay(transform.position, Vector2.left * Core.CollisionSenses.CheckDistance);
+            Debug.DrawRay(transform.position, Vector2.up * Core.CollisionSenses.CheckDistance);
+            Debug.DrawRay(transform.position, Vector2.down * Core.CollisionSenses.CheckDistance);
         }
     }
 

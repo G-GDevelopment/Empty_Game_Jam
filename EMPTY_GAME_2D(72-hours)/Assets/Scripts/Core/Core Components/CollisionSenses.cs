@@ -10,6 +10,7 @@ public class CollisionSenses : CoreComponents
     public Vector2 Offset2 { get => _offset2; set => _offset2 = value; }
     public Vector2 Offset3 { get => _offset3; set => _offset3 = value; }
     public Vector2 Offset4 { get => _offset4; set => _offset4 = value; }
+    public float CheckDistance { get => _checkDistance; set => _checkDistance = value; }
 
     [SerializeField] private Transform _checkPosition;
     [SerializeField] private Vector2 _overlapSize;
@@ -21,7 +22,7 @@ public class CollisionSenses : CoreComponents
 
     public void LogicUpdate()
     {
-        Debug.Log(_trueOffsetValue);
+        Debug.Log(LeftRaycast);
     }
 
     public bool IsLookingAtMonster
@@ -71,5 +72,6 @@ public class CollisionSenses : CoreComponents
     {
         get => Physics2D.Raycast(_checkPosition.position, Vector2.down, _checkDistance, _playerLayer);
     }
+
     #endregion
 }
