@@ -22,7 +22,7 @@ public class CollisionSenses : CoreComponents
 
     public void LogicUpdate()
     {
-        Debug.Log(LeftRaycast);
+        
     }
 
     public bool IsLookingAtMonster
@@ -30,6 +30,20 @@ public class CollisionSenses : CoreComponents
         get => Physics2D.OverlapBox(_checkPosition.position + (Vector3)trueOffset(), _overlapSize, _monsterLayer);
     }
 
+    public Collider2D CreaturesInCollisionZone()
+    {
+         Collider2D[] collisions =  Physics2D.OverlapBoxAll(_checkPosition.position + (Vector3)trueOffset(), _overlapSize, _monsterLayer);
+
+        for (int i = 0; i < collisions.Length; i++)
+        {
+            if(collisions[i].GetType() == typeof(Collider2D))
+            {
+                return collisions[i];
+            }
+        }
+
+        return null;
+    }
     private Vector2 trueOffset()
     {
         if(_trueOffsetValue == 1)
