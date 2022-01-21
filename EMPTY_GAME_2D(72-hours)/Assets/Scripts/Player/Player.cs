@@ -69,7 +69,6 @@ public class Player : MonoBehaviour
 
     private void AnimationFinishedTrigger() => StateMachine.CurrentState.AnimationFinishedTrigger();
 
-
     #endregion
 
     #region DrawGizmos

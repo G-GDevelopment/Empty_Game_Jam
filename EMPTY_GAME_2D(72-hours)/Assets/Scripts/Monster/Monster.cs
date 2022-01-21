@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Monster : MonoBehaviour
+public class Monster : MonoBehaviour, ISpotted
 {
     #region Variables Concerning States
     public MonsterStateMachine StateMachine { get; private set; }
@@ -23,6 +23,9 @@ public class Monster : MonoBehaviour
 
     #region Variables
     [SerializeField] private bool _debugGizmos = false;
+    private bool _isSpottedByPlayer;
+
+    public bool IsSpotted { get => _isSpottedByPlayer; set => _isSpottedByPlayer = value; }
 
     #endregion
 
@@ -65,8 +68,12 @@ public class Monster : MonoBehaviour
     private void AnimationTrigger() => StateMachine.CurrentState.AnimationTrigger();
 
     private void AnimationFinishedTrigger() => StateMachine.CurrentState.AnimationFinishedTrigger();
+    public void IsSpottedByPlayer(bool isSpotted)
+    {
+        Debug.Log("Sweeping Angle Has been spotted");
 
-
+        _isSpottedByPlayer = isSpotted;
+    }
     #endregion
 
     #region DrawGizmos
@@ -81,6 +88,8 @@ public class Monster : MonoBehaviour
             Debug.DrawRay(transform.position, Vector2.down * Core.CollisionSenses.CheckDistance);
         }
     }
+
+
 
     #endregion
 }

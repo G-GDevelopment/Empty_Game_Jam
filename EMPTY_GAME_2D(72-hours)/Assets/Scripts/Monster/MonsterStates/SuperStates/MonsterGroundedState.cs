@@ -26,7 +26,6 @@ public class MonsterGroundedState : MonsterState
         if (core.CollisionSenses.RightRaycast)
         {
             direction = Vector2.right;
-            Debug.Log("Attack Player");
         }else if (core.CollisionSenses.LeftRaycast)
         {
             direction = Vector2.left;

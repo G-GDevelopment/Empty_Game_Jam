@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class CollisionSenses : CoreComponents
 {
@@ -10,6 +11,7 @@ public class CollisionSenses : CoreComponents
     public Vector2 Offset2 { get => _offset2; set => _offset2 = value; }
     public Vector2 Offset3 { get => _offset3; set => _offset3 = value; }
     public Vector2 Offset4 { get => _offset4; set => _offset4 = value; }
+    public LayerMask MonsterLayer { get => _monsterLayer; set => _monsterLayer = value; }
     public float CheckDistance { get => _checkDistance; set => _checkDistance = value; }
 
     [SerializeField] private Transform _checkPosition;
@@ -30,21 +32,13 @@ public class CollisionSenses : CoreComponents
         get => Physics2D.OverlapBox(_checkPosition.position + (Vector3)trueOffset(), _overlapSize, _monsterLayer);
     }
 
+
     public Collider2D CreaturesInCollisionZone()
     {
-         Collider2D[] collisions =  Physics2D.OverlapBoxAll(_checkPosition.position + (Vector3)trueOffset(), _overlapSize, _monsterLayer);
-
-        for (int i = 0; i < collisions.Length; i++)
-        {
-            if(collisions[i].GetType() == typeof(Collider2D))
-            {
-                return collisions[i];
-            }
-        }
-
-        return null;
+        return Physics2D.OverlapBox(_checkPosition.position + (Vector3)trueOffset(), _overlapSize, _monsterLayer);
     }
-    private Vector2 trueOffset()
+
+    public Vector2 trueOffset()
     {
         if(_trueOffsetValue == 1)
         {

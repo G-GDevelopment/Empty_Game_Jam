@@ -50,6 +50,7 @@ public class PlayerGroundedState : PlayerState
         if (core.CollisionSenses.IsLookingAtMonster)
         {
             core.Ability.AddToDetected(core.CollisionSenses.CreaturesInCollisionZone());
+
         }
         else
         {
