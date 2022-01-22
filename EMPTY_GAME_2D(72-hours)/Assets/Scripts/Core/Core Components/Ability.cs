@@ -11,7 +11,9 @@ public class Ability : CoreComponents
 
     private BoxCollider2D _boxCollider2D;
     public bool IsSpotted { get => isSpotted; set => isSpotted = value; }
+    public bool IsThisMonster { get => isThisMonster; set => isThisMonster = value; }
 
+    private bool isThisMonster;
     private bool isSpotted;
 
     private List<ISpotted> _detectedCreatures = new List<ISpotted>();
@@ -24,7 +26,7 @@ public class Ability : CoreComponents
     }
     public void LogicUpdate()
     {
-        CheckForDetectedCreatures();
+        CheckForDetectedCreatures(isThisMonster);
     }
 
     public void UpdateBoxCollider(Vector2 p_size, Vector2 p_offset)
@@ -51,11 +53,17 @@ public class Ability : CoreComponents
         }
 
     }
-    public void CheckForDetectedCreatures()
+    public void CheckForDetectedCreatures(bool thisIsMonster)
     {
         foreach (ISpotted item in _detectedCreatures.ToList())
         {
+            
             item.IsSpottedByPlayer(true);
+
+            if (thisIsMonster)
+            {
+                item.Damage(69);
+            }
         }
     }
 
@@ -68,4 +76,6 @@ public class Ability : CoreComponents
     {
         RemoveFromDetected(collision);
     }
+
+    public void SetIsThisMonsterToTrue() => isThisMonster = true;
 }

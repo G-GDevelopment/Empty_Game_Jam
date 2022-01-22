@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, ISpotted
 {
     #region Variables Concerning States
     public PlayerStateMachine StateMachine { get; private set; }
@@ -82,6 +82,26 @@ public class Player : MonoBehaviour
             Gizmos.DrawCube(Core.CollisionSenses.CheckPosition.position + (Vector3)Core.CollisionSenses.Offset3, Core.CollisionSenses.OverlapSize);
             Gizmos.DrawCube(Core.CollisionSenses.CheckPosition.position + (Vector3)Core.CollisionSenses.Offset4, Core.CollisionSenses.OverlapSize);
         }
+    }
+
+    public void IsSpottedByPlayer(bool isSpotted)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void Damage(float amount)
+    {
+        if(amount > 0)
+        {
+            //Destroy(gameObject, 0.0f);
+            Debug.Log("Player Died");
+
+        }
+    }
+
+    public void LetThereBeLight(bool isLight)
+    {
+        throw new System.NotImplementedException();
     }
 
     #endregion

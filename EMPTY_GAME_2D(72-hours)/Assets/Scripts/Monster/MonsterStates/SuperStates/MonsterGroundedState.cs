@@ -14,6 +14,12 @@ public class MonsterGroundedState : MonsterState
     {
     }
 
+    public override void EnterState()
+    {
+        base.EnterState();
+        core.Ability.SetIsThisMonsterToTrue();
+    }
+
     public override void StandardUpdate()
     {
         base.StandardUpdate();
@@ -23,9 +29,7 @@ public class MonsterGroundedState : MonsterState
 
         inputX = Mathf.RoundToInt(direction.x);
         inputY = Mathf.RoundToInt(direction.y);
-        Debug.Log("isspotted: " + monster.IsSpotted);
 
-        Debug.Log("Collisoin: " + core.CollisionSenses.IsPlayerLeavingLookingZone(_lastSavedDirection));
         if (monster.IsSpotted)
         {
             if(!core.CollisionSenses.IsPlayerLeavingLookingZone(_lastSavedDirection))

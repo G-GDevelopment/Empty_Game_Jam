@@ -10,6 +10,9 @@ public class PlayerGroundedState : PlayerState
     protected int lastInputX;
     protected int lastInputY;
     protected Vector2 direction;
+    protected Vector2 lastDirection;
+
+    protected bool _isThereLight;
     public PlayerGroundedState(Player p_player, PlayerStateMachine p_stateMachine, PlayerData p_playerData, string p_animboolName) : base(p_player, p_stateMachine, p_playerData, p_animboolName)
     {
     }
@@ -40,28 +43,34 @@ public class PlayerGroundedState : PlayerState
 
         inputX = player.InputHandler.NormalizeInputX;
         inputY = player.InputHandler.NormalizeInputY;
+        _isThereLight = core.CollisionSenses.IsPlayerLookingLongdistance(lastDirection);
 
         core.CollisionSenses.SetTrueOffsetValue(SetIndex());
 
         direction = new Vector2(inputX, inputY);
         UpdateLastKnownInput(inputX, inputY);
 
-        if(SetIndex() == 1)
+        if (SetIndex() == 1)
         {
-            core.Ability.UpdateBoxCollider(playerData.BoxColliderSizeRight, playerData.BoxColliderOffsetRight);
-        }else if(SetIndex() == 2)
-        {
-            core.Ability.UpdateBoxCollider(playerData.BoxColliderSizeRight, playerData.BoxColliderOffsetRight * -1);
-        }else if(SetIndex() == 3)
-        {
-            core.Ability.UpdateBoxCollider(playerData.BoxColliderSizeUp, playerData.BoxColliderOffsetUp);
-        }else if(SetIndex() == 4)
-        {
-            core.Ability.UpdateBoxCollider(playerData.BoxColliderSizeUp, playerData.BoxColliderOffsetUp * -1);
+            core.Ability.UpdateBoxCollider(_isThereLight ? playerData.BoxColliderSizeRight + new Vector2(core.CollisionSenses.DistanceFromPlayerToLight * 2.5f, 0) : playerData.BoxColliderSizeRight, _isThereLight ? playerData.BoxColliderOffsetRight * 2 : playerData.BoxColliderOffsetRight);
         }
+        else if (SetIndex() == 2)
+        {
+            core.Ability.UpdateBoxCollider(_isThereLight ? playerData.BoxColliderSizeRight + new Vector2(core.CollisionSenses.DistanceFromPlayerToLight * 2.5f, 0) : playerData.BoxColliderSizeRight, _isThereLight ? playerData.BoxColliderOffsetRight * -2 : playerData.BoxColliderOffsetRight * -1);
+        }
+        else if (SetIndex() == 3)
+        {
+            core.Ability.UpdateBoxCollider(_isThereLight ? playerData.BoxColliderSizeUp + new Vector2(0, core.CollisionSenses.DistanceFromPlayerToLight * 2.5f) : playerData.BoxColliderSizeUp, _isThereLight ? playerData.BoxColliderOffsetUp * 2 : playerData.BoxColliderOffsetUp);
+        }
+        else if (SetIndex() == 4)
+        {
+            core.Ability.UpdateBoxCollider(_isThereLight ? playerData.BoxColliderSizeUp + new Vector2(0, core.CollisionSenses.DistanceFromPlayerToLight * 2.5f) : playerData.BoxColliderSizeUp, _isThereLight ? playerData.BoxColliderOffsetUp * -2 : playerData.BoxColliderOffsetUp * -1);
+        }
+
+        Debug.DrawRay(player.transform.position, direction * 10, Color.red);
     }
 
-    private int SetIndex()
+    public int SetIndex()
     {
         if(lastInputX == 1 && lastInputY == 0)
         {
@@ -95,5 +104,7 @@ public class PlayerGroundedState : PlayerState
             lastInputY = p_y;
             lastInputX = 0;
         }
+
+        lastDirection = new Vector2(lastInputX, lastInputY);
     }
 }

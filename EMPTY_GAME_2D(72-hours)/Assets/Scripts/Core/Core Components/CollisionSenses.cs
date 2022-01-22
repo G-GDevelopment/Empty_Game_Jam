@@ -13,14 +13,17 @@ public class CollisionSenses : CoreComponents
     public Vector2 Offset4 { get => _offset4; set => _offset4 = value; }
     public LayerMask MonsterLayer { get => _monsterLayer; set => _monsterLayer = value; }
     public float CheckDistance { get => _checkDistance; set => _checkDistance = value; }
+    public float DistanceFromPlayerToLight { get => _distanceFromPlayerToLight; set => _distanceFromPlayerToLight = value; }
 
     [SerializeField] private Transform _checkPosition;
     [SerializeField] private Vector2 _overlapSize;
     [SerializeField] private Vector2 _offset1, _offset2, _offset3, _offset4;
     [SerializeField] private float _checkDistance = 50f;
+    private float _distanceFromPlayerToLight;
     private int _trueOffsetValue;
     [SerializeField] private LayerMask _monsterLayer;
     [SerializeField] private LayerMask _playerLayer;
+    [SerializeField] private LayerMask _lightLayer;
     private ContactFilter2D _contactFilter;
 
     public void LogicUpdate()
@@ -32,6 +35,13 @@ public class CollisionSenses : CoreComponents
     public bool IsPlayerLeavingLookingZone(Vector2 p_direction)
     {
         return Physics2D.Raycast(_checkPosition.position, p_direction, 2.45f, _playerLayer);
+    }
+
+    public bool IsPlayerLookingLongdistance(Vector2 p_direction)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(_checkPosition.position, p_direction, 10, _lightLayer);
+        _distanceFromPlayerToLight = hit.distance;
+        return Physics2D.Raycast(_checkPosition.position, p_direction, 10, _lightLayer);
     }
 
     public Vector2 trueOffset()

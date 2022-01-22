@@ -24,8 +24,10 @@ public class Monster : MonoBehaviour, ISpotted
     #region Variables
     [SerializeField] private bool _debugGizmos = false;
     private bool _isSpottedByPlayer;
+    private bool _isSpottedByLight;
 
     public bool IsSpotted { get => _isSpottedByPlayer; set => _isSpottedByPlayer = value; }
+    public bool IsSpottedByLight { get => _isSpottedByLight; set => _isSpottedByLight = value; }
 
     #endregion
 
@@ -38,6 +40,7 @@ public class Monster : MonoBehaviour, ISpotted
 
         IdleState = new MonsterIdleState(this, StateMachine, _monsterData, "Idle");
         MovementState = new MonsterMovementState(this, StateMachine, _monsterData, "Run");
+
 
 
     }
@@ -74,10 +77,23 @@ public class Monster : MonoBehaviour, ISpotted
 
         _isSpottedByPlayer = isSpotted;
 
-        
-
     }
+    public void Damage(float amount)
+    {
+        if(amount > 69)
+        {
+            Debug.Log("Monster died");
 
+            //Destroy(gameObject, 0.0f);
+            gameObject.SetActive(false);
+
+        }
+    }
+    
+    public void LetThereBeLight(bool isLight)
+    {
+        _isSpottedByLight = isLight;
+    }
     public void SetIsSpottedByPlayerToFalse() => _isSpottedByPlayer = false;
     #endregion
 
@@ -99,6 +115,10 @@ public class Monster : MonoBehaviour, ISpotted
             Gizmos.DrawCube(Core.CollisionSenses.CheckPosition.position + (Vector3)Core.CollisionSenses.Offset4, Core.CollisionSenses.OverlapSize);
         }
     }
+
+
+
+
 
 
 
