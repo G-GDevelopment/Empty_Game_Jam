@@ -9,6 +9,13 @@ public class PlayerMovementState : PlayerGroundedState
     {
     }
 
+    public override void EnterState()
+    {
+        base.EnterState();
+
+        core.Movement.audioManager.PickRandomSound("Footstep1", "Footstep2", "Footstep3", "Footstep4");
+    }
+
     public override void FixedUpdate()
     {
         base.FixedUpdate();

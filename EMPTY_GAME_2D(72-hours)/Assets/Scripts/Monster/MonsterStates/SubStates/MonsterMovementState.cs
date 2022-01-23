@@ -11,6 +11,13 @@ public class MonsterMovementState : MonsterGroundedState
     public override void EnterState()
     {
         base.EnterState();
+        core.Movement.audioManager.PickRandomSound("RockSlide1", "RockSlide2", "RockSlide3");
+
+        if (!core.CollisionSenses.IsPlayerLeavingLookingZone(_lastSavedDirection))
+        {
+            core.Movement.audioManager.PickRandomSound("Scream1", "Scream2");
+
+        }
     }
 
     public override void StandardUpdate()

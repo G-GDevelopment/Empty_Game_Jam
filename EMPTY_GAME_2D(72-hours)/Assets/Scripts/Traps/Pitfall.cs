@@ -12,8 +12,7 @@ public class Pitfall : MonoBehaviour
 
     private Tilemap _tile;
     [SerializeField] private TileBase _pitfall;
-    [SerializeField]
-    private Vector3Int position;
+    [SerializeField] private Vector3Int position;
 
     
 
@@ -28,11 +27,12 @@ public class Pitfall : MonoBehaviour
     {
         CheckForDetectedCreatures();
 
-        if(_activatePitfall > 1)
+        if(_activatePitfall == 2)
         {
-
+            _activatePitfall++;
             _tile.SetTile(position, _pitfall);
 
+            FindObjectOfType<AudioManager>().PlaySound("Pitfall", true);
 
         }
 

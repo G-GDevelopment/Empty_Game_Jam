@@ -12,7 +12,9 @@ public class Movement : CoreComponents
     [SerializeField] private Tilemap _collisionTiles;
     [SerializeField] private Tilemap _trapsTiles;
     [SerializeField] private Tilemap _spikesTiles;
+    [SerializeField] private Tilemap _exit;
     [SerializeField] Transform _movePoint;
+    public AudioManager audioManager { get; private set; }
 
     private bool _isMoving;
     private bool _isWalkingBackwards;
@@ -23,6 +25,8 @@ public class Movement : CoreComponents
         base.Awake();
 
         Rigidbody = GetComponentInParent<Rigidbody2D>();
+        audioManager = FindObjectOfType<AudioManager>();
+
 
         _movePoint.parent = null;
 
@@ -110,7 +114,7 @@ public class Movement : CoreComponents
     {
         Vector3Int gridPosition = _groundTiles.WorldToCell(transform.position + (Vector3)p_direction);
 
-        if(!_groundTiles.HasTile(gridPosition) && !_trapsTiles.HasTile(gridPosition) && !_spikesTiles.HasTile(gridPosition) || _collisionTiles.HasTile(gridPosition))
+        if(!_groundTiles.HasTile(gridPosition) && !_trapsTiles.HasTile(gridPosition) && !_spikesTiles.HasTile(gridPosition) && !_exit.HasTile(gridPosition) || _collisionTiles.HasTile(gridPosition))
         {
             return false;
         }

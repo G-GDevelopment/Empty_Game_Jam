@@ -9,7 +9,7 @@ public class MonsterGroundedState : MonsterState
     protected Vector2 direction;
     protected int setIndex;
 
-    private Vector2 _lastSavedDirection;
+    protected Vector2 _lastSavedDirection;
     public MonsterGroundedState(Monster p_monster, MonsterStateMachine p_stateMachine, PlayerData p_monsterData, string p_animboolName) : base(p_monster, p_stateMachine, p_monsterData, p_animboolName)
     {
     }
@@ -38,7 +38,6 @@ public class MonsterGroundedState : MonsterState
             }
         }
 
-        Debug.Log(monster.IsSpottedByLight);
     }
 
     private void SetDirection()

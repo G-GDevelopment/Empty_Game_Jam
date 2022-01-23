@@ -21,8 +21,8 @@ public class LightTraps : MonoBehaviour
     {
         CheckForDetectedCreatures();
 
-        Debug.Log("Is Trigger on LightTrap: " + _triggerOn);
-        Debug.Log("Is monster in the zone: " + _monsterInTheZone);
+        //Debug.Log("Is Trigger on LightTrap: " + _triggerOn);
+        //Debug.Log("Is monster in the zone: " + _monsterInTheZone);
     }
 
     private void onLightTile()

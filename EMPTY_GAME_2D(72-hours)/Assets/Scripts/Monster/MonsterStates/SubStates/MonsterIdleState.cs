@@ -18,6 +18,7 @@ public class MonsterIdleState : MonsterGroundedState
     public override void ExitState()
     {
         base.ExitState();
+
     }
 
     public override void StandardUpdate()
