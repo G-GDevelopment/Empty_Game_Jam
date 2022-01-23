@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using System.Linq;
 
 public class Pitfall : MonoBehaviour
@@ -9,9 +10,31 @@ public class Pitfall : MonoBehaviour
 
     private List<ISpotted> _detectedCreatures = new List<ISpotted>();
 
+    private Tilemap _tile;
+    [SerializeField] private TileBase _pitfall;
+    [SerializeField]
+    private Vector3Int position;
+
+    
+
+    private void Start()
+    {
+        _tile = GetComponent<Tilemap>();
+
+
+    }
+
     public void Update()
     {
         CheckForDetectedCreatures();
+
+        if(_activatePitfall > 1)
+        {
+
+            _tile.SetTile(position, _pitfall);
+
+
+        }
 
     }
 
@@ -67,6 +90,13 @@ public class Pitfall : MonoBehaviour
             RemoveFromDetected(collision);
 
         }
+
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawCube(position, new Vector3(1, 1, 0));
 
     }
 }

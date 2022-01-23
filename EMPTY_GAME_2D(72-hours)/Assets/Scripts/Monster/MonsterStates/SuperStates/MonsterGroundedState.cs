@@ -37,11 +37,13 @@ public class MonsterGroundedState : MonsterState
                 monster.SetIsSpottedByPlayerToFalse();
             }
         }
+
+        Debug.Log(monster.IsSpottedByLight);
     }
 
     private void SetDirection()
     {
-        if (!monster.IsSpotted)
+        if (!monster.IsSpotted && !monster.IsSpottedByLight)
         {
             if (core.CollisionSenses.RightRaycast)
             {

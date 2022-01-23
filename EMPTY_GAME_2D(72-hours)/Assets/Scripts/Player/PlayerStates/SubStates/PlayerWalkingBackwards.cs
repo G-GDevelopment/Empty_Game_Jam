@@ -28,6 +28,9 @@ public class PlayerWalkingBackwards : PlayerGroundedState
         base.StandardUpdate();
         _isFlipping = player.InputHandler.FlipInput;
 
+        player.Animator.SetFloat("InputY", lastInputY * -1);
+        player.Animator.SetFloat("InputX", lastInputX * -1);
+
         core.Movement.SetMovement(direction, inputX, inputY, playerData.MovementSpeedBack);
 
         if (direction == Vector2.zero && !core.Movement.IsMoving && !_isFlipping)

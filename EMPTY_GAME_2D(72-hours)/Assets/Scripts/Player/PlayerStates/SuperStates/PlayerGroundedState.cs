@@ -35,6 +35,18 @@ public class PlayerGroundedState : PlayerState
     public override void FixedUpdate()
     {
         base.FixedUpdate();
+        if (_isThereLight)
+        {
+            GameEvents.current.TriggerLightTile();
+
+        }
+        else
+        {
+            GameEvents.current.ExitLightTile();
+            GameEvents.current.LookingAway();
+
+        }
+
     }
 
     public override void StandardUpdate()
@@ -45,6 +57,9 @@ public class PlayerGroundedState : PlayerState
         inputY = player.InputHandler.NormalizeInputY;
         _isThereLight = core.CollisionSenses.IsPlayerLookingLongdistance(lastDirection);
 
+        player.Animator.SetFloat("InputY", lastInputY);
+        player.Animator.SetFloat("InputX", lastInputX);
+
         core.CollisionSenses.SetTrueOffsetValue(SetIndex());
 
         direction = new Vector2(inputX, inputY);
@@ -52,19 +67,19 @@ public class PlayerGroundedState : PlayerState
 
         if (SetIndex() == 1)
         {
-            core.Ability.UpdateBoxCollider(_isThereLight ? playerData.BoxColliderSizeRight + new Vector2(core.CollisionSenses.DistanceFromPlayerToLight * 2.5f, 0) : playerData.BoxColliderSizeRight, _isThereLight ? playerData.BoxColliderOffsetRight * 2 : playerData.BoxColliderOffsetRight);
+            core.Ability.UpdateBoxCollider(playerData.BoxColliderSizeRight, playerData.BoxColliderOffsetRight);
         }
         else if (SetIndex() == 2)
         {
-            core.Ability.UpdateBoxCollider(_isThereLight ? playerData.BoxColliderSizeRight + new Vector2(core.CollisionSenses.DistanceFromPlayerToLight * 2.5f, 0) : playerData.BoxColliderSizeRight, _isThereLight ? playerData.BoxColliderOffsetRight * -2 : playerData.BoxColliderOffsetRight * -1);
+            core.Ability.UpdateBoxCollider(playerData.BoxColliderSizeRight, playerData.BoxColliderOffsetRight * -1);
         }
         else if (SetIndex() == 3)
         {
-            core.Ability.UpdateBoxCollider(_isThereLight ? playerData.BoxColliderSizeUp + new Vector2(0, core.CollisionSenses.DistanceFromPlayerToLight * 2.5f) : playerData.BoxColliderSizeUp, _isThereLight ? playerData.BoxColliderOffsetUp * 2 : playerData.BoxColliderOffsetUp);
+            core.Ability.UpdateBoxCollider(playerData.BoxColliderSizeUp, playerData.BoxColliderOffsetUp);
         }
         else if (SetIndex() == 4)
         {
-            core.Ability.UpdateBoxCollider(_isThereLight ? playerData.BoxColliderSizeUp + new Vector2(0, core.CollisionSenses.DistanceFromPlayerToLight * 2.5f) : playerData.BoxColliderSizeUp, _isThereLight ? playerData.BoxColliderOffsetUp * -2 : playerData.BoxColliderOffsetUp * -1);
+            core.Ability.UpdateBoxCollider(playerData.BoxColliderSizeUp, playerData.BoxColliderOffsetUp * -1);
         }
 
         Debug.DrawRay(player.transform.position, direction * 10, Color.red);
@@ -88,7 +103,7 @@ public class PlayerGroundedState : PlayerState
             return core.Movement.IsWalkingBackwards ? 3 : 4;
         }
 
-        return 1;
+        return 4;
     }
 
     private void UpdateLastKnownInput(int p_x, int p_y)

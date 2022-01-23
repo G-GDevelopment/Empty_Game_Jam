@@ -11,6 +11,7 @@ public class Movement : CoreComponents
     [SerializeField] private Tilemap _groundTiles;
     [SerializeField] private Tilemap _collisionTiles;
     [SerializeField] private Tilemap _trapsTiles;
+    [SerializeField] private Tilemap _spikesTiles;
     [SerializeField] Transform _movePoint;
 
     private bool _isMoving;
@@ -109,7 +110,7 @@ public class Movement : CoreComponents
     {
         Vector3Int gridPosition = _groundTiles.WorldToCell(transform.position + (Vector3)p_direction);
 
-        if(!_groundTiles.HasTile(gridPosition) || _collisionTiles.HasTile(gridPosition))
+        if(!_groundTiles.HasTile(gridPosition) && !_trapsTiles.HasTile(gridPosition) && !_spikesTiles.HasTile(gridPosition) || _collisionTiles.HasTile(gridPosition))
         {
             return false;
         }

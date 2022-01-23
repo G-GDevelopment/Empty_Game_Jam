@@ -35,8 +35,8 @@ public class Player : MonoBehaviour, ISpotted
         StateMachine = new PlayerStateMachine();
 
         IdleState = new PlayerIdleState(this, StateMachine, _playerData, "Idle");
-        MovementState = new PlayerMovementState(this, StateMachine, _playerData, "Run");
-        BackwardsMoveState = new PlayerWalkingBackwards(this, StateMachine, _playerData, "Backwards");
+        MovementState = new PlayerMovementState(this, StateMachine, _playerData, "Move");
+        BackwardsMoveState = new PlayerWalkingBackwards(this, StateMachine, _playerData, "Move");
 
 
     }
@@ -60,6 +60,7 @@ public class Player : MonoBehaviour, ISpotted
     private void FixedUpdate()
     {
         StateMachine.CurrentState.FixedUpdate();
+
     }
 
     #endregion
@@ -86,7 +87,7 @@ public class Player : MonoBehaviour, ISpotted
 
     public void IsSpottedByPlayer(bool isSpotted)
     {
-        throw new System.NotImplementedException();
+        //Do nothing here
     }
 
     public void Damage(float amount)

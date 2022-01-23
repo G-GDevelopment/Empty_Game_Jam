@@ -18,7 +18,8 @@ public class PlayerMovementState : PlayerGroundedState
     {
         base.StandardUpdate();
         _isFlipping = player.InputHandler.FlipInput;
-        //Flip Character sprites here??
+
+
 
         core.Movement.SetMovement(direction, inputX, inputY, playerData.MovementSpeed);
 

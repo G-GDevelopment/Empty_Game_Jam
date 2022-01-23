@@ -51,6 +51,8 @@ public class Monster : MonoBehaviour, ISpotted
         CapsuleCollider = GetComponent<CapsuleCollider2D>();
         StateMachine.Initialize(IdleState);
 
+        GameEvents.current.onLookingAway += SetSpottedByLightToFalse;
+
     }
 
     private void Update()
@@ -71,6 +73,10 @@ public class Monster : MonoBehaviour, ISpotted
     private void AnimationTrigger() => StateMachine.CurrentState.AnimationTrigger();
 
     private void AnimationFinishedTrigger() => StateMachine.CurrentState.AnimationFinishedTrigger();
+    private void SetSpottedByLightToFalse()
+    {
+        _isSpottedByLight = false;
+    }
     public void IsSpottedByPlayer(bool isSpotted)
     {
         Debug.Log("Sweeping Angle Has been spotted");
