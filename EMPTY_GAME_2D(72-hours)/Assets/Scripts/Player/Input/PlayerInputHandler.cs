@@ -10,6 +10,7 @@ public class PlayerInputHandler : MonoBehaviour
     public int NormalizeInputX { get; private set; }
     public int NormalizeInputY { get; private set; }
     public bool FlipInput { get; private set; }
+    public bool ExitGame { get; private set; }
 
     public void Update()
     {
@@ -34,6 +35,20 @@ public class PlayerInputHandler : MonoBehaviour
         if (context.canceled)
         {
             FlipInput = false;
+        }
+    }
+
+    public void OnExitGame(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            ExitGame = true;
+
+        }
+
+        if (context.canceled)
+        {
+            ExitGame = false;
         }
     }
 

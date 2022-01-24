@@ -1,0 +1,131 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8933969893166290208
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8933969893166290209}
+  - component: {fileID: 8933969893166290214}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8933969893166290209
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8933969893166290208}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8933969893166290214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8933969893166290208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e516e0f3db4ff6f498926244b65967c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Theme
+    clip: {fileID: 8300000, guid: 039ce15e89afcb347a80289d0e02665c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    PlayOnAwake: 1
+    source: {fileID: 0}
+  - name: Footstep1
+    clip: {fileID: 8300000, guid: 447d3ba55fd0c174282ca94059dd7198, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    PlayOnAwake: 0
+    source: {fileID: 0}
+  - name: Footstep2
+    clip: {fileID: 8300000, guid: 7afe513ea1719474781bb7edaa05f7ce, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    PlayOnAwake: 0
+    source: {fileID: 0}
+  - name: Footstep3
+    clip: {fileID: 8300000, guid: 24069d6737462f64fa38b3be4edc90d5, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    PlayOnAwake: 0
+    source: {fileID: 0}
+  - name: Footstep4
+    clip: {fileID: 8300000, guid: 68359018d483fc944b603303b28715bc, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    PlayOnAwake: 0
+    source: {fileID: 0}
+  - name: RockSlide1
+    clip: {fileID: 8300000, guid: d98fe0ab7fb455b46804d2e5be08d7b1, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    PlayOnAwake: 0
+    source: {fileID: 0}
+  - name: RockSlide2
+    clip: {fileID: 8300000, guid: dd3b91be0728c7e42bf92ebc9faa780b, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    PlayOnAwake: 0
+    source: {fileID: 0}
+  - name: RockSlide3
+    clip: {fileID: 8300000, guid: 6aa9eb4ad69521745a877ab20295dac7, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    PlayOnAwake: 0
+    source: {fileID: 0}
+  - name: Scream1
+    clip: {fileID: 8300000, guid: 9408183a9f70ec840bfdecc67450a99f, type: 3}
+    volume: 0
+    pitch: 1
+    loop: 0
+    PlayOnAwake: 0
+    source: {fileID: 0}
+  - name: Scream2
+    clip: {fileID: 8300000, guid: 3890561773b1bc640b4fd98b334dcadb, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    PlayOnAwake: 0
+    source: {fileID: 0}
+  - name: Pitfall
+    clip: {fileID: 8300000, guid: bea673b35fc516e48b975ce4db2f505c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    PlayOnAwake: 0
+    source: {fileID: 0}
+  - name: Spikes
+    clip: {fileID: 8300000, guid: 8fe39f08c949fd1479ad11da5cfa611b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    PlayOnAwake: 0
+    source: {fileID: 0}

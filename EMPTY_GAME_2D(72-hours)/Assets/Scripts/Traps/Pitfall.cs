@@ -14,6 +14,9 @@ public class Pitfall : MonoBehaviour
     [SerializeField] private TileBase _pitfall;
     [SerializeField] private Vector3Int position;
 
+    [SerializeField] int _playerLayer;
+    [SerializeField] int _monsterLayer;
+
     
 
     private void Start()
@@ -71,23 +74,31 @@ public class Pitfall : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(_activatePitfall > 1)
+        if (collision.gameObject.layer == _playerLayer || collision.gameObject.layer == _monsterLayer)
         {
-            AddToDetected(collision);
+            if (_activatePitfall > 1)
+            {
+                AddToDetected(collision);
+
+            }
 
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (_activatePitfall <= 1)
+        if(collision.gameObject.layer == _playerLayer || collision.gameObject.layer == _monsterLayer)
         {
-            _activatePitfall++;
-        }
+            if (_activatePitfall <= 1)
+            {
+                _activatePitfall++;
+            }
 
-        if (_activatePitfall > 1)
-        {
-            RemoveFromDetected(collision);
+            if (_activatePitfall > 1)
+            {
+                RemoveFromDetected(collision);
+
+            }
 
         }
 

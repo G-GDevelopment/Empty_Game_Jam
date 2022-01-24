@@ -22,6 +22,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ExitGame",
+                    "type": "Button",
+                    "id": "37426ae5-98da-41be-814f-5f434a9dc2a3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -84,7 +93,7 @@
                     "name": "Arrows",
                     "id": "8fdb35ae-b3b1-4c2c-9281-378fa945903e",
                     "path": "2DVector",
-                    "interactions": "Tap(pressPoint=0.2)",
+                    "interactions": "Tap(duration=0.1,pressPoint=0.1)",
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Movement",
@@ -137,12 +146,67 @@
                 },
                 {
                     "name": "",
+                    "id": "1565c12b-5c79-417c-a3ad-87343d7605c6",
+                    "path": "<Gamepad>/dpad",
+                    "interactions": "Tap(duration=0.1,pressPoint=0.1)",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "9791470f-6fe4-44d6-9ebf-674667c01c10",
                     "path": "<Keyboard>/shift",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Flip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "860ab29f-0bc0-4398-b591-f237bd3c7f8d",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Flip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "86a7bb16-2b61-4d6e-ad73-7b98042838cd",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "ExitGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9133da8c-f0f5-4d41-9753-dd064df08ce1",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "ExitGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4046b61c-3915-415b-b900-0efc96346850",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "ExitGame",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

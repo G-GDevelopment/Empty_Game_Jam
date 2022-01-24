@@ -61,6 +61,13 @@ public class Player : MonoBehaviour, ISpotted
     {
         StateMachine.CurrentState.FixedUpdate();
 
+        //Exit Game function
+        if (InputHandler.ExitGame)
+        {
+            Debug.Log("Exit Game");
+            Application.Quit();
+        }
+
     }
 
     #endregion

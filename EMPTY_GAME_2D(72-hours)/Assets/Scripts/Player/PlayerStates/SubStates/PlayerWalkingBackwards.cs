@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerWalkingBackwards : PlayerGroundedState
 {
     private bool _isFlipping;
+    private bool _playSound;
 
     public PlayerWalkingBackwards(Player p_player, PlayerStateMachine p_stateMachine, PlayerData p_playerData, string p_animboolName) : base(p_player, p_stateMachine, p_playerData, p_animboolName)
     {
@@ -15,6 +16,8 @@ public class PlayerWalkingBackwards : PlayerGroundedState
     {
         base.EnterState();
         core.Movement.SetMovingBackWardsToTrue();
+
+        core.Movement.audioManager.PickRandomSound("Footstep1", "Footstep2", "Footstep3", "Footstep4");
     }
 
     public override void ExitState()
@@ -27,6 +30,18 @@ public class PlayerWalkingBackwards : PlayerGroundedState
     {
         base.StandardUpdate();
         _isFlipping = player.InputHandler.FlipInput;
+
+        if(inputX != 0 || inputY != 0)
+        {
+            _playSound = true;
+            core.Movement.audioManager.PickRandomSound("Footstep1", "Footstep2", "Footstep3", "Footstep4");
+        }
+        else
+        {
+            _playSound = false;
+        }
+
+
 
         player.Animator.SetFloat("InputY", lastInputY * -1);
         player.Animator.SetFloat("InputX", lastInputX * -1);

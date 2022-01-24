@@ -109,4 +109,9 @@ public class AudioManager : MonoBehaviour
 
 
     }
+
+    public void PlayClick()
+    {
+        PlaySound("Click", false);
+    }
 }
