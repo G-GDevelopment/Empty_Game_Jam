@@ -62,7 +62,7 @@ public class DeadlyTraps : MonoBehaviour
         if (collision.gameObject.layer == _playerLayer || collision.gameObject.layer == _monsterLayer)
         {
             AddToDetected(collision);
-            FindObjectOfType<AudioManager>().PlaySound("Spikes", true);
+            FindObjectOfType<AudioManager>().PlaySound("Spikes");
 
 
             _trapIsActive = true;

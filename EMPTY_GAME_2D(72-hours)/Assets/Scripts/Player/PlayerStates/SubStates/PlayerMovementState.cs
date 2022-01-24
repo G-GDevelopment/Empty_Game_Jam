@@ -13,7 +13,7 @@ public class PlayerMovementState : PlayerGroundedState
     {
         base.EnterState();
 
-        core.Movement.audioManager.PickRandomSound("Footstep1", "Footstep2", "Footstep3", "Footstep4");
+        core.PlayerAudio.PickRandomSound("Footstep1", "Footstep2", "Footstep3", "Footstep4");
     }
 
     public override void FixedUpdate()

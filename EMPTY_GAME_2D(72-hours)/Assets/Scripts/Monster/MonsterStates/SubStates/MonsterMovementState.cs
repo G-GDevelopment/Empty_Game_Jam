@@ -11,8 +11,7 @@ public class MonsterMovementState : MonsterGroundedState
     public override void EnterState()
     {
         base.EnterState();
-        core.Movement.audioManager.PickRandomSound("RockSlide1", "RockSlide2", "RockSlide3");
-            monster.MonsterScream(); //Ripple Effect
+        core.PlayerAudio.PickRandomSound("RockSlide1", "RockSlide2", "RockSlide3");
 
     }
 
@@ -25,7 +24,7 @@ public class MonsterMovementState : MonsterGroundedState
             core.Movement.SetMovement(direction, inputX, inputY, monsterData.MovementSpeed);
 
             {
-                core.Movement.audioManager.PickRandomSound("Scream1", "Scream2");
+                core.PlayerAudio.PickRandomSound("Scream1", "Scream2");
 
             }
 

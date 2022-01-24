@@ -7,6 +7,7 @@ public class Core : MonoBehaviour
     public Movement Movement { get; private set; }
     public CollisionSenses CollisionSenses { get; private set; }
     public Ability Ability { get; private set; }
+    public PlayerAudio PlayerAudio { get; private set; }
     public Animator Anim { get; private set; }
 
     private void Awake()
@@ -14,8 +15,9 @@ public class Core : MonoBehaviour
         Movement = GetComponentInChildren<Movement>();
         CollisionSenses = GetComponentInChildren<CollisionSenses>();
         Ability = GetComponentInChildren<Ability>();
+        PlayerAudio = GetComponentInChildren<PlayerAudio>();
         Anim = GetComponentInParent<Animator>();
-        if (!Movement || !CollisionSenses || !Ability)
+        if (!Movement || !CollisionSenses || !Ability || !PlayerAudio)
         {
             Debug.Log("Missing Core Components");
         }

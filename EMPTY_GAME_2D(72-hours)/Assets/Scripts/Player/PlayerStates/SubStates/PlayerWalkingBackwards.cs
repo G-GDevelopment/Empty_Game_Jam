@@ -17,7 +17,7 @@ public class PlayerWalkingBackwards : PlayerGroundedState
         base.EnterState();
         core.Movement.SetMovingBackWardsToTrue();
 
-        core.Movement.audioManager.PickRandomSound("Footstep1", "Footstep2", "Footstep3", "Footstep4");
+        core.PlayerAudio.PickRandomSound("Footstep1", "Footstep2", "Footstep3", "Footstep4");
     }
 
     public override void ExitState()
@@ -34,7 +34,7 @@ public class PlayerWalkingBackwards : PlayerGroundedState
         if(inputX != 0 || inputY != 0)
         {
             _playSound = true;
-            core.Movement.audioManager.PickRandomSound("Footstep1", "Footstep2", "Footstep3", "Footstep4");
+            core.PlayerAudio.PickRandomSound("Footstep1", "Footstep2", "Footstep3", "Footstep4");
         }
         else
         {

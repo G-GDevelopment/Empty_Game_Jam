@@ -20,6 +20,8 @@ public class Player : MonoBehaviour, ISpotted
     public PlayerInputHandler InputHandler { get; private set; }
     public CapsuleCollider2D CapsuleCollider { get; private set; }
 
+    [SerializeField] private LoadManager _loadManager;
+
     #endregion
 
     #region Variables
@@ -77,6 +79,29 @@ public class Player : MonoBehaviour, ISpotted
 
     private void AnimationFinishedTrigger() => StateMachine.CurrentState.AnimationFinishedTrigger();
 
+    public void IsSpottedByPlayer(bool isSpotted)
+    {
+        //Do nothing here
+        Debug.Log("Player is spotted - Do nothing");
+    }
+
+    public void Damage(float amount)
+    {
+        if (amount > 0)
+        {
+            //Restart Level
+            _loadManager.RestartLevel();
+
+        }
+    }
+
+    public void LetThereBeLight(bool isLight)
+    {
+        //Do nothing here
+        Debug.Log("Player in light zone - do nothing");
+
+    }
+
     #endregion
 
     #region DrawGizmos
@@ -90,25 +115,6 @@ public class Player : MonoBehaviour, ISpotted
             Gizmos.DrawCube(Core.CollisionSenses.CheckPosition.position + (Vector3)Core.CollisionSenses.Offset3, Core.CollisionSenses.OverlapSize);
             Gizmos.DrawCube(Core.CollisionSenses.CheckPosition.position + (Vector3)Core.CollisionSenses.Offset4, Core.CollisionSenses.OverlapSize);
         }
-    }
-
-    public void IsSpottedByPlayer(bool isSpotted)
-    {
-        //Do nothing here
-    }
-
-    public void Damage(float amount)
-    {
-        if(amount > 0)
-        {
-            //Restart Level
-
-        }
-    }
-
-    public void LetThereBeLight(bool isLight)
-    {
-        throw new System.NotImplementedException();
     }
 
     #endregion

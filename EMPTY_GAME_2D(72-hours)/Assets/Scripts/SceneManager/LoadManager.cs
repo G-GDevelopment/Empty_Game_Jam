@@ -10,20 +10,6 @@ public class LoadManager : MonoBehaviour
 
     public static LoadManager instance;
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-        DontDestroyOnLoad(gameObject);
-    }
-
     private void Update()
     {
         if (Input.GetKey(KeyCode.Escape))
@@ -51,5 +37,10 @@ public class LoadManager : MonoBehaviour
         yield return new WaitForSeconds(_transitionTime);
 
         SceneManager.LoadScene(p_levelIndex);
+    }
+
+    public void RestartLevel()
+    {
+        StartCoroutine(LoadTransition(SceneManager.GetActiveScene().buildIndex));
     }
 }

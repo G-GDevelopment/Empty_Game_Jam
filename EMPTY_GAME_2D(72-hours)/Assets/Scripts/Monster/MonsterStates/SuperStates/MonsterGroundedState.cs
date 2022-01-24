@@ -25,7 +25,6 @@ public class MonsterGroundedState : MonsterState
         base.StandardUpdate();
 
         SetDirection();
-        Debug.Log(direction);
         core.CollisionSenses.SetTrueOffsetValue(setIndex);
 
         inputX = Mathf.RoundToInt(direction.x);

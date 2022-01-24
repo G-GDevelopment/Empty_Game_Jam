@@ -14,7 +14,7 @@ public class Movement : CoreComponents
     [SerializeField] private Tilemap _spikesTiles;
     [SerializeField] private Tilemap _exit;
     [SerializeField] Transform _movePoint;
-    public AudioManager audioManager { get; private set; }
+
 
     private bool _isMoving;
     private bool _isWalkingBackwards;
@@ -25,7 +25,6 @@ public class Movement : CoreComponents
         base.Awake();
 
         Rigidbody = GetComponentInParent<Rigidbody2D>();
-        audioManager = FindObjectOfType<AudioManager>();
 
 
         _movePoint.parent = null;

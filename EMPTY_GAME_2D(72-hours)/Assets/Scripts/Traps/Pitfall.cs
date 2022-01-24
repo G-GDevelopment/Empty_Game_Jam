@@ -30,12 +30,12 @@ public class Pitfall : MonoBehaviour
     {
         CheckForDetectedCreatures();
 
-        if(_activatePitfall == 1)
+        if(_activatePitfall == 2)
         {
             _activatePitfall++;
             _tile.SetTile(position, _pitfall);
 
-            FindObjectOfType<AudioManager>().PlaySound("Pitfall", true);
+            FindObjectOfType<AudioManager>().PlaySound("Pitfall");
 
         }
 
@@ -78,6 +78,7 @@ public class Pitfall : MonoBehaviour
         {
             if (_activatePitfall > 1)
             {
+                _activatePitfall++;
                 AddToDetected(collision);
 
             }
