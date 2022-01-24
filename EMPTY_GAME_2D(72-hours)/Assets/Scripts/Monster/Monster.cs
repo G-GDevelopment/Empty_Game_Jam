@@ -73,6 +73,11 @@ public class Monster : MonoBehaviour, ISpotted
     private void AnimationTrigger() => StateMachine.CurrentState.AnimationTrigger();
 
     private void AnimationFinishedTrigger() => StateMachine.CurrentState.AnimationFinishedTrigger();
+
+    public  void MonsterScream()
+    {
+        FindObjectOfType<RippleEffect>().Emit(Camera.main.WorldToViewportPoint(transform.position));
+    }
     private void SetSpottedByLightToFalse()
     {
         _isSpottedByLight = false;

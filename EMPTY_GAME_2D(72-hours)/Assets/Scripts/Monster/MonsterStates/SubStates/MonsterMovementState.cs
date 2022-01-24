@@ -12,6 +12,7 @@ public class MonsterMovementState : MonsterGroundedState
     {
         base.EnterState();
         core.Movement.audioManager.PickRandomSound("RockSlide1", "RockSlide2", "RockSlide3");
+            monster.MonsterScream(); //Ripple Effect
 
         if (!core.CollisionSenses.IsPlayerLeavingLookingZone(_lastSavedDirection))
         {
