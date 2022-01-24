@@ -21,24 +21,56 @@ public class PlayerIdleState : PlayerGroundedState
         base.StandardUpdate();
         _isFlipping = player.InputHandler.FlipInput;
 
+        if (lastInputX == 1 && lastInputY == 0)
+        {
+            if (!core.Movement.IsWalkingBackwards)
+            {
+                core.Ability.UpdateBoxCollider(playerData.BoxColliderSizeRight, playerData.BoxColliderOffsetRight);
+            }
+            else
+            {
+                core.Ability.UpdateBoxCollider(playerData.BoxColliderSizeRight, playerData.BoxColliderOffsetRight * -1);
 
+            }
 
-        if (SetIndex() == 1)
-        {
-            core.Ability.UpdateBoxCollider(playerData.BoxColliderSizeRight, playerData.BoxColliderOffsetRight);
         }
-        else if (SetIndex() == 2)
+        
+        if (lastInputX == -1 && lastInputY == 0)
         {
-            core.Ability.UpdateBoxCollider(playerData.BoxColliderSizeRight, playerData.BoxColliderOffsetRight * -1);
+            if (!core.Movement.IsWalkingBackwards)
+            {
+                core.Ability.UpdateBoxCollider(playerData.BoxColliderSizeRight, playerData.BoxColliderOffsetRight * -1);
+            }
+            else
+            {
+                core.Ability.UpdateBoxCollider(playerData.BoxColliderSizeRight, playerData.BoxColliderOffsetRight);
+            }
         }
-        else if (SetIndex() == 3)
+
+        if (lastInputY == 1 && lastInputX == 0)
         {
-            core.Ability.UpdateBoxCollider(playerData.BoxColliderSizeUp, playerData.BoxColliderOffsetUp);
+            if (!core.Movement.IsWalkingBackwards)
+            {
+                core.Ability.UpdateBoxCollider(playerData.BoxColliderSizeUp, playerData.BoxColliderOffsetUp);
+            }
+            else
+            {
+                core.Ability.UpdateBoxCollider(playerData.BoxColliderSizeUp, playerData.BoxColliderOffsetUp * -1);
+            }
         }
-        else if (SetIndex() == 4)
+        
+        if (lastInputY == -1 && lastInputX == 0)
         {
-            core.Ability.UpdateBoxCollider(playerData.BoxColliderSizeUp, playerData.BoxColliderOffsetUp * -1);
+            if (!core.Movement.IsWalkingBackwards)
+            {
+                core.Ability.UpdateBoxCollider(playerData.BoxColliderSizeUp, playerData.BoxColliderOffsetUp * -1);
+            }
+            else
+            {
+                core.Ability.UpdateBoxCollider(playerData.BoxColliderSizeUp, playerData.BoxColliderOffsetUp);
+            }
         }
+
 
         if (!isExistingState)
         {

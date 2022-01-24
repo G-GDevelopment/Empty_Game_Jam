@@ -60,6 +60,7 @@ public class PlayerGroundedState : PlayerState
         player.Animator.SetFloat("InputY", lastInputY);
         player.Animator.SetFloat("InputX", lastInputX);
 
+
         core.CollisionSenses.SetTrueOffsetValue(SetIndex());
 
         direction = new Vector2(inputX, inputY);

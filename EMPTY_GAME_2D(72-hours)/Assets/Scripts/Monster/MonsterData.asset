@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b2d5c4d4a653c24fa82e9b7497197c6, type: 3}
   m_Name: MonsterData
   m_EditorClassIdentifier: 
-  MovementSpeed: 2
+  MovementSpeed: 3
   MovementSpeedBack: 0
+  TimeBeforeMoving: 1
   BoxColliderSizeRight: {x: 2, y: 1}
   BoxColliderSizeUp: {x: 1, y: 2}
   BoxColliderOffsetRight: {x: 1.5, y: 0}

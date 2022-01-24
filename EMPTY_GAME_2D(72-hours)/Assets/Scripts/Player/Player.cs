@@ -101,8 +101,7 @@ public class Player : MonoBehaviour, ISpotted
     {
         if(amount > 0)
         {
-            //Destroy(gameObject, 0.0f);
-            Debug.Log("Player Died");
+            //Restart Level
 
         }
     }

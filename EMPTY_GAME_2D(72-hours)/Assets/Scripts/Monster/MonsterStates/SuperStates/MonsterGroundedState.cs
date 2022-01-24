@@ -25,6 +25,7 @@ public class MonsterGroundedState : MonsterState
         base.StandardUpdate();
 
         SetDirection();
+        Debug.Log(direction);
         core.CollisionSenses.SetTrueOffsetValue(setIndex);
 
         inputX = Mathf.RoundToInt(direction.x);
@@ -64,6 +65,9 @@ public class MonsterGroundedState : MonsterState
                 direction = Vector2.down;
                 _lastSavedDirection = direction;
                 setIndex = 4;
+            }else if(!core.CollisionSenses.RightRaycast && !core.CollisionSenses.LeftRaycast && !core.CollisionSenses.UpRaycast && !core.CollisionSenses.DownRaycast)
+            {
+                direction = Vector2.zero;
             }
         }
         else

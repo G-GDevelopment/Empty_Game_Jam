@@ -14,19 +14,22 @@ public class MonsterMovementState : MonsterGroundedState
         core.Movement.audioManager.PickRandomSound("RockSlide1", "RockSlide2", "RockSlide3");
             monster.MonsterScream(); //Ripple Effect
 
-        if (!core.CollisionSenses.IsPlayerLeavingLookingZone(_lastSavedDirection))
-        {
-            core.Movement.audioManager.PickRandomSound("Scream1", "Scream2");
-
-        }
     }
 
     public override void StandardUpdate()
     {
         base.StandardUpdate();
 
-        
-        core.Movement.SetMovement(direction, inputX, inputY, monsterData.MovementSpeed);
+        if(Time.time > startTime + monsterData.TimeBeforeMoving)
+        {
+            core.Movement.SetMovement(direction, inputX, inputY, monsterData.MovementSpeed);
+
+            {
+                core.Movement.audioManager.PickRandomSound("Scream1", "Scream2");
+
+            }
+
+        }
 
         if (direction == Vector2.zero && !core.Movement.IsMoving)
         {
@@ -34,4 +37,5 @@ public class MonsterMovementState : MonsterGroundedState
             //Set FacingDirection before leaving this state to Idle
         }
     }
+
 }

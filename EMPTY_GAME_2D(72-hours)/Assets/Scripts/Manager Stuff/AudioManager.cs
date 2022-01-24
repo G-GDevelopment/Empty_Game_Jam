@@ -51,7 +51,6 @@ public class AudioManager : MonoBehaviour
             Debug.LogError("Sound: " + name + " not found");
             return;
         }
-        Debug.Log("Playing Sound");
         if(!s.source.isPlaying && p_waitForSourceToFinish || !p_waitForSourceToFinish)
         {
             s.source.Play();

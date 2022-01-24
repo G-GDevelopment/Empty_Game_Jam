@@ -10,16 +10,23 @@ public class DeadlyTraps : MonoBehaviour
     [SerializeField] private TileBase _spikes;
     private bool _trapIsActive;
     [SerializeField] private Vector3Int position;
-    private List<ISpotted> _detectedCreatures = new List<ISpotted>();
 
+
+    [SerializeField] int _playerLayer;
+    [SerializeField] int _monsterLayer;
+
+    private List<ISpotted> _detectedCreatures = new List<ISpotted>();
+    private void Start()
+    {
+        _tile = GetComponent<Tilemap>();
+    }
     public void Update()
     {
         CheckForDetectedCreatures();
 
         if (_trapIsActive)
         {
-            FindObjectOfType<AudioManager>().PlaySound("Spikes", true);
-            _trapIsActive = false;
+            _tile.SetTile(position, _spikes);
         }
     }
 
@@ -52,15 +59,30 @@ public class DeadlyTraps : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        AddToDetected(collision);
+        if (collision.gameObject.layer == _playerLayer || collision.gameObject.layer == _monsterLayer)
+        {
+            AddToDetected(collision);
+            FindObjectOfType<AudioManager>().PlaySound("Spikes", true);
 
-        _tile.SetTile(position, _spikes);
 
-        _trapIsActive = true;
+            _trapIsActive = true;
+
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        RemoveFromDetected(collision);
+        if(collision.gameObject.layer == _playerLayer || collision.gameObject.layer == _monsterLayer)
+        {
+            RemoveFromDetected(collision);
+
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawCube(position, new Vector3(1, 1, 0));
+
     }
 }

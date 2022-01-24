@@ -26,8 +26,10 @@ public class Monster : MonoBehaviour, ISpotted
     private bool _isSpottedByPlayer;
     private bool _isSpottedByLight;
 
+
     public bool IsSpotted { get => _isSpottedByPlayer; set => _isSpottedByPlayer = value; }
     public bool IsSpottedByLight { get => _isSpottedByLight; set => _isSpottedByLight = value; }
+
 
     #endregion
 
@@ -84,7 +86,6 @@ public class Monster : MonoBehaviour, ISpotted
     }
     public void IsSpottedByPlayer(bool isSpotted)
     {
-        Debug.Log("Sweeping Angle Has been spotted");
 
         _isSpottedByPlayer = isSpotted;
 
@@ -93,9 +94,8 @@ public class Monster : MonoBehaviour, ISpotted
     {
         if(amount > 69)
         {
-            Debug.Log("Monster died");
 
-            //Destroy(gameObject, 0.0f);
+            Destroy(gameObject, 0.0f);
             gameObject.SetActive(false);
 
         }

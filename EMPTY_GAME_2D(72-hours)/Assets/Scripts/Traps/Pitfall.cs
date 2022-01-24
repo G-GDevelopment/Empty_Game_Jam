@@ -30,7 +30,7 @@ public class Pitfall : MonoBehaviour
     {
         CheckForDetectedCreatures();
 
-        if(_activatePitfall == 2)
+        if(_activatePitfall == 1)
         {
             _activatePitfall++;
             _tile.SetTile(position, _pitfall);
