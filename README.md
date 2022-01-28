@@ -1,5 +1,24 @@
-# Empty_Game_Jam
-This project is a simple 2D top-down Horror Puzzle - I quickle made it for the Coding Block Game Jam 22. Do what you want with this.
-Unity Engine and C# is used for this project.
-Assets in this project is made by GG-Development.
-Check my youtube channel: https://www.youtube.com/channel/UC3xfx1Y2UIKsSCtEcRPKM6g - leave a comment if you wan to know more about this project. Or Dm my twitter https://twitter.com/G_GDevelopment
+# Coding Blocks Game Jam 22' submission
+#Don't Look Away
+
+Simple Horror puzzle game.
+
+There will be a tutorial of this game on my YouTube channel [GG Development](https://www.youtube.com/channel/UC3xfx1Y2UIKsSCtEcRPKM6g)
+
+### Language
+C#
+
+### Prerequisites
+
+- Unity version 2021.2 or higher
+
+
+## Authors
+Code and Art
+* **Patrick Garcia, GG Dev**
+<br>[![Twitter Follow](https://img.shields.io/twitter/follow/G_GDevelopment.svg?style=social)](https://twitter.com/G_GDevelopment)
+
+
+## License
+
+None what so ever - Do the yonk and twist or the yonk without the twist. I'm not here to stop you.
